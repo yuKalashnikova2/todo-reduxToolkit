@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import TodoItem from './TodoItem'
+import { useSelector } from 'react-redux'
 
 // eslint-disable-next-line react/prop-types
-const TodoList = ({ todos, handleRemoveTodo, handleToggleTodo }) => {
+const TodoList = ({  handleRemoveTodo, handleToggleTodo }) => {
+  const todos = useSelector(store => store.todos.todos)
   return (
     <ul>
       {todos.map((todo) => (
