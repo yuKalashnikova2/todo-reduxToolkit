@@ -40,6 +40,10 @@ ul li {
   gap: 10px
 }
 
+input:checked + span {
+  text-decoration: line-through;
+}
+
 .delete {
   color: 'red';
   margin-left: 10px;

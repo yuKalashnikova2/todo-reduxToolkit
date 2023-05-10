@@ -20,6 +20,16 @@ function App() {
   const handleRemoveTodo = (todoId) => {
     setTodos(todos.filter((todo) => todo.id !== todoId))
   }
+
+  const handleToggleTodo = (todoId) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id !== todoId) return todo
+        return { ...todo, completed: !todo.completed }
+      })
+    )
+  }
+
   return (
     <div className="main">
       <h1>Туду лист + редакс</h1>
@@ -31,7 +41,11 @@ function App() {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => handleToggleTodo(todo.id)}
+            />
             <span>{todo.text}</span>
             <span className="delete" onClick={() => handleRemoveTodo(todo.id)}>
               &times;
