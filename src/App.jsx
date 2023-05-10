@@ -16,6 +16,10 @@ function App() {
     ])
     setText('')
   }
+
+  const handleRemoveTodo = (todoId) => {
+    setTodos(todos.filter((todo) => todo.id !== todoId))
+  }
   return (
     <div className="main">
       <h1>Туду лист + редакс</h1>
@@ -29,7 +33,9 @@ function App() {
           <li key={todo.id}>
             <input type="checkbox" />
             <span>{todo.text}</span>
-            <span className='delete'>&times;</span>
+            <span className="delete" onClick={() => handleRemoveTodo(todo.id)}>
+              &times;
+            </span>
           </li>
         ))}
       </ul>
