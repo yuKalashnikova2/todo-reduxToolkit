@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import './App.css'
 import InputField from './components/InputField'
 import TodoList from './components/TodoList'
@@ -7,7 +8,12 @@ import { handleAddTodo } from './store/todoSlice'
 function App() {
 
   const [text, setText] = useState('')
+  const dispatch = useDispatch()
 
+  const addTask = () => {
+    dispatch(handleAddTodo({text}))
+    setText('')
+  }
 
   const handleRemoveTodo = () => {
     // setTodos(todos.filter((todo) => todo.id !== todoId))
@@ -23,9 +29,12 @@ function App() {
   }
 
   return (
+
+    
     <div className="main">
+      {console.log('render')}
       <h1>Туду лист + редакс</h1>
-      <InputField text={text} setText={setText} handleAddTodo={handleAddTodo} />
+      <InputField text={text} setText={setText} handleAddTodo={addTask} />
       <TodoList
         handleRemoveTodo={handleRemoveTodo}
         handleToggleTodo={handleToggleTodo}
