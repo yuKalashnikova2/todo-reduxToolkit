@@ -4,7 +4,7 @@ export const todoSlice = createSlice({
   name: 'todoSlice',
   initialState: { todos: [] },
   reducers: {
-    handleAddTodo(state, action) {
+    addTodo(state, action) {
       console.log(state)
       console.log(action)
 
@@ -15,13 +15,16 @@ export const todoSlice = createSlice({
       })
     },
 
-    handleRemoveTodo(state, action) {
-        state.todos = state.todos.filter(todo => todo.id !== action.payload.id)
+    removeTodo(state, action) {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload.id)
     },
 
-    handleToggleTodo() {},
+    toggleTodo(state, action) {
+      const toggle = state.todos.find((todo) => todo.id === action.payload.id)
+      toggle.completed = !toggle.completed
+    },
   },
 })
 
-export const { handleAddTodo,  handleRemoveTodo, handleToggleTodo } = todoSlice.actions
+export const { addTodo, removeTodo, toggleTodo } = todoSlice.actions
 export default todoSlice.reducer
