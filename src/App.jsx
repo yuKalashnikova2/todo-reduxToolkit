@@ -6,39 +6,29 @@ import TodoList from './components/TodoList'
 import { handleAddTodo } from './store/todoSlice'
 
 function App() {
-
   const [text, setText] = useState('')
   const dispatch = useDispatch()
 
   const addTask = () => {
-    dispatch(handleAddTodo({text}))
+    dispatch(handleAddTodo({ text }))
     setText('')
   }
 
-  const handleRemoveTodo = () => {
-    // setTodos(todos.filter((todo) => todo.id !== todoId))
-  }
-
-  const handleToggleTodo = () => {
+  // const handleToggleTodo = () => {
     // setTodos(
     //   todos.map((todo) => {
     //     if (todo.id !== todoId) return todo
     //     return { ...todo, completed: !todo.completed }
     //   })
     // )
-  }
+  // }
 
   return (
-
-    
     <div className="main">
       {console.log('render')}
       <h1>Туду лист + редакс</h1>
       <InputField text={text} setText={setText} handleAddTodo={addTask} />
-      <TodoList
-        handleRemoveTodo={handleRemoveTodo}
-        handleToggleTodo={handleToggleTodo}
-      />
+      <TodoList />
     </div>
   )
 }

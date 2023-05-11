@@ -15,7 +15,9 @@ export const todoSlice = createSlice({
       })
     },
 
-    handleRemoveTodo() {},
+    handleRemoveTodo(state, action) {
+        state.todos = state.todos.filter(todo => todo.id !== action.payload.id)
+    },
 
     handleToggleTodo() {},
   },
