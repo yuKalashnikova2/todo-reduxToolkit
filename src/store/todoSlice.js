@@ -5,9 +5,6 @@ export const todoSlice = createSlice({
   initialState: { todos: [] },
   reducers: {
     addTodo(state, action) {
-      console.log(state)
-      console.log(action)
-
       state.todos.push({
         id: new Date().toISOString(),
         text: action.payload.text,

@@ -16,7 +16,6 @@ function App() {
 
   return (
     <div className="main">
-      {console.log('render')}
       <h1>Туду лист + редакс</h1>
       <InputField text={text} setText={setText} addTodo={addTask} />
       <TodoList />
